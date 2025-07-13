@@ -19,6 +19,14 @@ public class ApiResponse<T> {
                 .build();
     }
 
+    public static <T> ApiResponse<T> created(T data) {
+        return ApiResponse.<T>builder()
+                .data(data)
+                .status(ApiResponseStatus.CREATED)
+                .httpStatus(HttpStatus.CREATED.value())
+                .build();
+    }
+
     public static <T> ApiResponse<T> empty() {
         return ApiResponse.<T>builder()
                 .data(null)
