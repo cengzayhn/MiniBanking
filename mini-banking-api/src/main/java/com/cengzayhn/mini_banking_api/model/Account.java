@@ -1,21 +1,20 @@
 package com.cengzayhn.mini_banking_api.model;
 
+import com.cengzayhn.mini_banking_api.common.base.BaseEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
-public class Account {
-    @Id
-    @GeneratedValue
-    private UUID id;
+public class Account extends BaseEntity {
+    @Column(name = "account_number", nullable = false, unique = true)
     private String number;
+
+    @Column(name = "account_name", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "account_balance", nullable = false)
     private BigDecimal balance;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

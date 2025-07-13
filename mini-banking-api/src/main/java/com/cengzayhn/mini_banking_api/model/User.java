@@ -1,22 +1,21 @@
 package com.cengzayhn.mini_banking_api.model;
 
+import com.cengzayhn.mini_banking_api.common.base.BaseEntity;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "\"user\"")
-public class User {
-    @Id
-    @GeneratedValue
-    private UUID id;
+public class User extends BaseEntity {
+    @Column(name = "user_username", nullable = false, unique = true)
     private String username;
+
+    @Column(name = "user_password", nullable = false)
     private String password;
+
+    @Column(name = "user_email", nullable = false, unique = true)
     private String email;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Account> accounts;

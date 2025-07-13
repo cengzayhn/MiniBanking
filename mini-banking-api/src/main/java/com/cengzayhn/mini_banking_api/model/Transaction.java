@@ -1,26 +1,22 @@
 package com.cengzayhn.mini_banking_api.model;
 
+import com.cengzayhn.mini_banking_api.common.base.BaseEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
-public class Transaction {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Transaction extends BaseEntity {
+    @Column(name = "transaction_amount", nullable = false)
+    private BigDecimal amount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transaction_status", nullable = false)
+    private TransactionStatus status;
 
     @ManyToOne
     private Account from;
 
     @ManyToOne
     private Account to;
-
-    private BigDecimal amount;
-    private LocalDateTime transactionDate;
-
-    @Enumerated(EnumType.STRING)
-    private TransactionStatus status;
-
 }
