@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         User user = getByUsername(loginRequestDTO.getUsername());
 
         if (!passwordEncoder.matches(loginRequestDTO.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid username or password"); //TOdo: should be thrown proper exception !!!!
+            throw new RuntimeException("Invalid username or password");
         }
 
         return jwtService.generateToken(user.getUsername());

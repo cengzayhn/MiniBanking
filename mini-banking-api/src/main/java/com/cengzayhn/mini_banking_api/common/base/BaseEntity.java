@@ -15,9 +15,12 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Getter
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
+    @Getter
+    @Setter
     private LocalDateTime updatedAt;
 
     @PrePersist

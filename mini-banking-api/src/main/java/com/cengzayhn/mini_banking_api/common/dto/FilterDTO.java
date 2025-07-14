@@ -12,6 +12,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 public class FilterDTO {
+    private String searchText = "";
     private int currentPage;
     private int pageSize;
     private String sortingColumn;

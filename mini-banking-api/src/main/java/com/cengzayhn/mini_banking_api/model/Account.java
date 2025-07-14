@@ -2,9 +2,13 @@ package com.cengzayhn.mini_banking_api.model;
 
 import com.cengzayhn.mini_banking_api.common.base.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 @Entity
 public class Account extends BaseEntity {
     @Column(name = "account_number", nullable = false, unique = true)
